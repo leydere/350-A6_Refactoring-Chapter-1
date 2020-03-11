@@ -3,6 +3,8 @@ package bad.robot.refactoring.chapter1;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.java.bad.robot.refactoring.chapter1.Rental;
+
 public class Rental {
 
     private Movie movie;
@@ -21,4 +23,23 @@ public class Rental {
         return daysRented;
     }
 
+    double getChargeFor() {
+        double amount = 0;
+        switch (getMovie().getPriceCode()) {
+            case REGULAR:
+                amount += 2;
+                if (getDaysRented() > 2)
+                    amount += (getDaysRented() - 2) * 1.5;
+                break;
+            case NEW_RELEASE:
+                amount += getDaysRented() * 3;
+                break;
+            case CHILDREN:
+                amount += 1.5;
+                if (getDaysRented() > 3)
+                    amount += (getDaysRented() - 3) * 1.5;
+                break;
+        }
+        return amount;
+    }
 }
