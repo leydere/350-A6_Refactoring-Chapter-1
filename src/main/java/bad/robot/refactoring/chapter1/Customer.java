@@ -42,12 +42,12 @@ public class Customer {
     }
     
     private int calculateFrequentRenterPoints(Rental rental) {
-    	int frequentRenterPoints = 0;
+    	int points = 0;
         // add frequent renter points
-        frequentRenterPoints++;
+        points++;
         // add bonus for a two day new release rental
         if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1)
-            frequentRenterPoints++;
+            points++;
     }
 
 }
